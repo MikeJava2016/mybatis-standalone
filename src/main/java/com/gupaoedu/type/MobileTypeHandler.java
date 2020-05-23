@@ -8,10 +8,7 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MobileTypeHandler extends BaseTypeHandler<List<Integer>> {
@@ -31,7 +28,7 @@ public class MobileTypeHandler extends BaseTypeHandler<List<Integer>> {
             List<Integer> collect = Arrays.stream(res.split(",")).map(x -> Integer.parseInt(x)).collect(Collectors.toList());
             return collect;
         }
-        return null;
+        return new ArrayList<>();
     }
 
     @Override

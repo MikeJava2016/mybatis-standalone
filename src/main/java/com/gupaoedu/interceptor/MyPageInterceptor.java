@@ -26,7 +26,8 @@ public class MyPageInterceptor implements Interceptor {
         RowBounds rb = (RowBounds) args[2]; // RowBounds
         // RowBounds为空，无需分页
         if (rb == RowBounds.DEFAULT) {
-            return invocation.proceed();
+//            return invocation.proceed();
+            return invocation.getMethod().invoke(invocation.getTarget(),invocation.getArgs());
         }
 
         // 将原 RowBounds 参数设为 RowBounds.DEFAULT，关闭 MyBatis 内置的分页机制
@@ -54,7 +55,4 @@ public class MyPageInterceptor implements Interceptor {
         return Plugin.wrap(target, this);
     }
 
-    @Override
-    public void setProperties(Properties properties) {
-    }
 }

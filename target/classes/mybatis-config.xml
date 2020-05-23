@@ -8,7 +8,7 @@
         <setting name="logImpl" value="STDOUT_LOGGING" />
 
         <!-- 控制全局缓存（二级缓存），默认 true-->
-        <setting name="cacheEnabled" value="true"/>
+<!--        <setting name="cacheEnabled" value="true"/>-->
 
         <!-- 延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。默认 false  -->
 <!--        <setting name="lazyLoadingEnabled" value="true"/>-->
@@ -18,6 +18,7 @@
         <!--<setting name="proxyFactory" value="CGLIB" />-->
         <!-- STATEMENT级别的缓存，使一级缓存，只针对当前执行的这一statement有效 -->
         <!--
+
                 <setting name="localCacheScope" value="STATEMENT"/>
         -->
         <setting name="localCacheScope" value="SESSION"/>
@@ -47,6 +48,16 @@
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/><!-- 单独使用时配置成MANAGED没有事务 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+
             <dataSource type="POOLED">
                 <property name="driver" value="${jdbc.driver}"/>
                 <property name="url" value="${jdbc.url}"/>

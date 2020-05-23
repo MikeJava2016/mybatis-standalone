@@ -5,10 +5,8 @@
 <!--    <cache/>-->
 
     <!-- 使用Redis作为二级缓存 -->
-<!--
-    <cache type="org.mybatis.caches.redis.RedisCache"
-           eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
--->
+<!--    <cache type="org.mybatis.caches.redis.RedisCache"-->
+<!--           eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>-->
         <cache type="org.apache.ibatis.cache.impl.PerpetualCache"
                size="1024"
                eviction="LRU"
@@ -41,7 +39,7 @@
         <id column="bid" property="bid" jdbcType="INTEGER"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <association property="author" javaType="com.gupaoedu.domain.Author"
-                     column="author_id" select="selectAuthor" fetchType="eager"/> <!-- selectAuthor 定义在下面-->
+                     column="author_id" select="selectAuthor"/> <!-- selectAuthor 定义在下面-->
     </resultMap>
 
     <!--  查询文章带评论的结果（一对多） -->
@@ -68,7 +66,9 @@
     </resultMap>
 
     <!-- ===============以上是resultMap定义================= -->
-
+    <!--    useCache="true" select的默认值 -->
+    <!--    useCache="false" insert update delete的默认值-->
+    <!--    flushCache="true"-->
     <select id="selectBlogById" resultMap="BaseResultMap" statementType="PREPARED" >
         select * from blog where bid = #{bid}
     </select>

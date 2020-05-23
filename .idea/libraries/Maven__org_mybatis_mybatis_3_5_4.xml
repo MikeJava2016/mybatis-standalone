@@ -7,8 +7,6 @@
       <root url="jar://$USER_HOME$/.m2/repository/org/mybatis/mybatis/3.5.4/mybatis-3.5.4-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/../../../../../study/java_project/source_code/mybatis-3/src/main/java" />
-      <root url="file://$PROJECT_DIR$/../../../../../study/java_project/source_code/mybatis-3/src/test/java" />
       <root url="jar://$USER_HOME$/.m2/repository/org/mybatis/mybatis/3.5.4/mybatis-3.5.4-sources.jar!/" />
     </SOURCES>
   </library>

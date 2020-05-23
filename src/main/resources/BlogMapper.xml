@@ -5,10 +5,8 @@
 <!--    <cache/>-->
 
     <!-- 使用Redis作为二级缓存 -->
-<!--
-    <cache type="org.mybatis.caches.redis.RedisCache"
-           eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
--->
+<!--    <cache type="org.mybatis.caches.redis.RedisCache"-->
+<!--           eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>-->
         <cache type="org.apache.ibatis.cache.impl.PerpetualCache"
                size="1024"
                eviction="LRU"
@@ -31,6 +29,11 @@
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <!-- 联合查询，将author的属性映射到ResultMap -->
         <association property="author" javaType="com.gupaoedu.domain.Author">
+           <!-- <constructor></constructor>
+            <discriminator javaType="">
+                <case value=""></case>
+            </discriminator>-->
+
             <id column="author_id" property="authorId"/>
             <result column="author_name" property="authorName"/>
         </association>
@@ -68,8 +71,10 @@
     </resultMap>
 
     <!-- ===============以上是resultMap定义================= -->
-
-    <select id="selectBlogById" resultMap="BaseResultMap" statementType="PREPARED" >
+    <!--    useCache="true" select的默认值 -->
+    <!--    useCache="false" insert update delete的默认值-->
+    <!--    flushCache="true"-->
+    <select id="selectBlogById" resultMap="BaseResultMap" statementType="PREPARED">
         select * from blog where bid = #{bid}
     </select>
 
